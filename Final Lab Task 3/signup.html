@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JS Example</title>
+
+	
+
+</head>
+<body> 
+
+    <form onsubmit="return validate()">
+
+
+    Name: <input type="text" id="Name" name="" value="" /><br>
+    Gender: <input type="radio" id="Gender" value="Male"> Male
+            <input type="radio" id="Gender" value="Female"> Female
+            <input type="radio" id="Gender" value="Other"> Others<br>
+    Email: <input type="Email" id="Email" value=""><br>
+    DoB: <input type="date" id="DoB" value = " ">  <br> 
+    Blood_Group: <select id="Blood_Group">
+                    <option value="A+"> A+ </option>
+                    <option value="A-"> A- </option>
+                    <option value="B+"> B+ </option>
+                    <option value="B-"> B- </option>
+                    <option value="AB+"> AB+ </option>
+                    <option value="AB-"> AB- </option>
+                    <option value="O+"> O+ </option>
+                    <option value="O-"> O- </option>
+                  </select><br>
+    Degree: <input type="checkbox" id="" ="Degree" value="SSC"> SSC 
+                <input type="checkbox" id="Degree" value="HSC"> HSC
+                <input type="checkbox" id="Degree" value="BSC"> BSC
+                <input type="checkbox" id="Degree" value="BBA"> BBA
+                <input type="checkbox" id="Degree" value="MA"> MA
+                <input type="checkbox" id="Degree" value="MSC"> MSC
+                <input type="checkbox" id="Degree" value="MBA"> MBA
+                <input type="checkbox" id="Degree" value="Others"> Others<br>
+    Occupation: <select id="Occupation">
+                    <option value="Student"> Student </option>
+                    <option value="Teacher"> Teacher </option>
+                    <option value="Businessman"> Businessman </option>
+                    <option value="Govt_Employee "> Govt_Employee </option>
+                    <option value="Others"> Others </option>
+                  </select><br>
+    User_Name: <input type="text" id="User_Name" value=""><br>     
+    Password: <input type="Password" id="password" name="" value="" /><br>
+    Confirm_Password: <input type="Password" id="Password" value=""> <br>                                 
+              <input type="submit" name="" id="submit" value="submit"  /><br>
+	  </form> 
+
+    <script>
+
+        function validate(){
+          let Name = document.getElementById('Name').value;
+          let Gender = document.getElementById('Gender').value;
+          let Email = document.getElementById('Email').value;
+          let DoB = document.getElementById('DoB').value;
+          let Blood_Group = document.getElementById('Blood_Group').value;
+          let Degree = document.getElementById('Degree').value;
+          let Occupation = document.getElementById('Occupation').value;
+          let User_Name = document.getElementById('User_Name').value;
+          let Password = document.getElementById('Password').value;
+          let Confirm_Password = document.getElementById('Confirm_Password').value;
+
+           
+      if(Name != ""){
+          return true;
+           
+         
+      }else{
+               
+               return false;
+      }
+
+      if(Gender != ""){
+        return true;
+         
+      }else{
+               
+               return false;
+            
+          }
+
+      if(Email != ""){
+        return true;
+         
+      }else{
+               
+               return false;
+
+
+      if(DoB != ""){
+        return true;
+         
+      }else{
+               
+                return false;
+
+      }
+
+      if(Blood_Group != ""){
+        return true;
+         
+      }else{
+          
+              return false;
+      }
+
+      if(Degree != ""){
+        return true;
+         
+      }else{
+              
+               return false;
+      }
+
+      if(Occupation != ""){
+        return true;
+         
+      }else{
+               
+               return false;
+      }
+
+      if(User_Name != ""){
+        return true;
+         
+      }else{
+               
+               return false;
+      }
+
+      if(Password != ""){
+        return true;
+         
+      }else{
+               
+               return false;
+      }
+
+      if(Confirm_Password != ""){
+        return true;
+         
+      }else{
+               
+               return false;
+      }
+
+      }	
+           
+        }  
+      function ajax(){ 
+                let Name = document.getElementById('Name').value;
+                let Email = document.getElementById('Password').value;
+                let DoB = document.getElementById('Password').value;
+                let Blood_Group = document.getElementById('Password').value;
+                let Degree = document.getElementById('Password').value;
+                let Occupation = document.getElementById('Password').value;
+                let User_Name = document.getElementById('Password').value;
+                let Password = document.getElementById('Password').value;
+                let Confirm_Password = document.getElementById('Password').value;
+                let student = {'Name' : Name, 'Email' : Email, 'DoB' : DoB, 'Blood_Group' : Blood_Group, 'Degree' : Degree, 'Occupation' : Occupation, 'User_Name' : User_Name, 'Password': Password, 'Confirm_Password' : Confirm_Password};
+                let json = JSON.stringify(student);
+
+                let xhttp = new XMLHttpRequest();
+                // xhttp.open('GET','usercheck.php?username='+username, true);
+                // xhttp.onreadystatechange = function (){                    
+                //     if(this.readyState == 4 && this.status == 200){
+                //         //alert(this.responseText);
+                //         document.getElementById('head').innerHTML = this.responseText;
+                //     }
+                // } 
+                // xhttp.send();
+
+                xhttp.open('POST','usercheck.php', true);
+                xhttp.onreadystatechange = function (){                    
+                    if(this.readyState == 4 && this.status == 200){
+                        //let student = JSON.parse(this.responseText);
+                        //document.getElementById('head').innerHTML = student.username;
+                        alert(this.responseText);
+                    }
+                }
+
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+                xhttp.send('data='+json);        
+            }
+        </script>
+		   
+		   
+    </script>
+</body>
+</html>
